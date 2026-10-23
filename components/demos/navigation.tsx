@@ -21,7 +21,7 @@ export function SidebarDemo() {
     <div className="flex h-80 w-full overflow-hidden rounded-lg border">
       <aside className={cn("flex shrink-0 flex-col gap-4 border-r bg-sidebar p-2 transition-[width]", collapsed ? "w-14" : "w-56")}>
         <button type="button" className="flex items-center gap-2 rounded-md p-1.5 text-left hover:bg-sidebar-accent">
-          <span className="grid size-8 shrink-0 place-items-center rounded-md bg-sidebar-primary text-sm font-bold text-sidebar-primary-foreground">A</span>
+          <img src="/brand/aastra-mark.png" alt="Aastra" className="size-8 shrink-0 rounded-md" />
           {!collapsed && (
             <>
               <span className="grid flex-1 leading-tight">
