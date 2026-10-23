@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * CredResolve/ui tokens
+ * shadcn/ui (slate) theme with the CredResolve primary (#F68B1F) and Inter Variable.
+ * Mirrors the "shadcn/ui" variable collection in the Figma file "CR Design System".
+ */
+:root {
+  --radius: 0.5rem;
+
+  --background: #ffffff;
+  --foreground: #020617;
+  --card: #ffffff;
+  --card-foreground: #020617;
+  --popover: #ffffff;
+  --popover-foreground: #020617;
+  --primary: #f68b1f;
+  --primary-foreground: #282a53;
+  --primary-hover: #e07a12;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #f1f5f9;
+  --accent-foreground: #0f172a;
+  --destructive: #dc2626;
+  --destructive-foreground: #f8fafc;
+  --success: #16a34a;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #64748b;
+
+  --sidebar: #f8fafc;
+  --sidebar-foreground: #334155;
+  --sidebar-primary: #f68b1f;
+  --sidebar-primary-foreground: #282a53;
+  --sidebar-accent: #f1f5f9;
+  --sidebar-accent-foreground: #0f172a;
+  --sidebar-border: #e2e8f0;
+
+  --chart-1: #f68b1f;
+  --chart-2: #282a53;
+  --chart-3: #9ca0bb;
+  --chart-4: #fec581;
+  --chart-5: #953710;
+
+  /* Brand palette (CredResolve Brand Identity Guidelines) */
+  --cr-resolve-orange: #f68b1f;
+  --cr-first-light: #fbae17;
+  --cr-dusk: #f05a22;
+  --cr-twilight: #282a53;
+  --cr-ivory: #fff4ee;
+  --cr-early-light: #dbe2ea;
+  --cr-gradient: linear-gradient(120deg, #fbae17 0%, #f68b1f 50%, #f05a22 100%);
+}
+
+.dark {
+  --background: #020617;
+  --foreground: #f8fafc;
+  --card: #020617;
+  --card-foreground: #f8fafc;
+  --popover: #020617;
+  --popover-foreground: #f8fafc;
+  --primary: #f68b1f;
+  --primary-foreground: #282a53;
+  --primary-hover: #fbae17;
+  --secondary: #1e293b;
+  --secondary-foreground: #f8fafc;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --accent: #1e293b;
+  --accent-foreground: #f8fafc;
+  --destructive: #b91c1c;
+  --destructive-foreground: #f8fafc;
+  --success: #22c55e;
+  --border: #334155;
+  --input: #334155;
+  --ring: #94a3b8;
+
+  --sidebar: #0f172a;
+  --sidebar-foreground: #f1f5f9;
+  --sidebar-primary: #f68b1f;
+  --sidebar-primary-foreground: #282a53;
+  --sidebar-accent: #1e293b;
+  --sidebar-accent-foreground: #f1f5f9;
+  --sidebar-border: #1e293b;
+
+  --chart-2: #d0d3e3;
+  --chart-3: #65698a;
+}
+
+@theme inline {
+  --font-sans: var(--font-inter), "Inter Variable", Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-inter), "Inter Variable", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-cr-orange: var(--cr-resolve-orange);
+  --color-cr-first-light: var(--cr-first-light);
+  --color-cr-dusk: var(--cr-dusk);
+  --color-cr-twilight: var(--cr-twilight);
+  --color-cr-ivory: var(--cr-ivory);
+  --color-cr-early-light: var(--cr-early-light);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  html {
+    font-feature-settings: "cv11", "ss01";
+    font-optical-sizing: auto;
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
