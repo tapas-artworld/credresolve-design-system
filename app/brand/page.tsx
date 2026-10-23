@@ -47,12 +47,12 @@ const lines = [
 ];
 
 const products = [
-  ["CredResolve OS", "The operating system that holds the family."],
-  ["Chakra", "Digital and voice outreach, omnichannel engagement."],
-  ["Jatayu", "Field operations and last-mile execution."],
-  ["Drona", "Speech QA and real-time call audit."],
-  ["Vishwaroop", "The visual role (eye glyph)."],
-  ["LegalX", "Legal workflows."],
+  ["CredResolve OS", "The operating system that holds the family.", "credresolve-os"],
+  ["Chakra", "Digital and voice outreach, omnichannel engagement.", "chakra"],
+  ["Jatayu", "Field operations and last-mile execution.", "jatayu"],
+  ["Drona", "Speech QA and real-time call audit.", "drona"],
+  ["Vishwaroop", "The visual role (eye glyph).", "vishwaroop"],
+  ["Vajra", "Legal workflows.", "vajra"],
 ];
 
 export default function BrandPage() {
@@ -218,9 +218,9 @@ export default function BrandPage() {
 
       <Section id="products" title="Product family" lead="One platform, specialised engines. Products are modules of CredResolve, not separate brands, and share one palette.">
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {products.map(([n, d]) => (
-            <div key={n} className="flex items-start gap-3 rounded-lg border p-4">
-              <span className="mt-1 size-2.5 shrink-0 rounded-full bg-primary" />
+          {products.map(([n, d, img]) => (
+            <div key={n} className="flex items-start gap-4 rounded-lg border p-4">
+              <img src={`/products/${img}.png`} alt={`${n} logo`} className="h-14 w-auto shrink-0" />
               <div>
                 <p className="font-semibold uppercase tracking-wide">{n}</p>
                 <p className="text-sm text-muted-foreground">{d}</p>
