@@ -22,22 +22,23 @@ export function CopyHex({ hex, className }: { hex: string; className?: string })
   };
 
   return (
-    <button
-      type="button"
-      onClick={copy}
-      aria-label={copied ? `Copied ${hex}` : `Copy ${hex}`}
-      title={copied ? "Copied" : "Copy hex"}
-      className={cn(
-        "inline-flex items-center gap-1.5 rounded-md px-1.5 py-0.5 text-xs font-semibold text-cr-twilight transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
-        copied ? "bg-[#f68b1f]" : "bg-[#f2f2f2] hover:bg-[#e6e6e6]",
-        className,
-      )}
-    >
+    <span className={cn("inline-flex items-center gap-1.5 text-xs font-semibold", className)}>
       {hex}
-      {copied ? <Check className="size-3.5" aria-hidden /> : <Copy className="size-3.5" aria-hidden />}
+      <button
+        type="button"
+        onClick={copy}
+        aria-label={copied ? `Copied ${hex}` : `Copy ${hex}`}
+        title={copied ? "Copied" : "Copy hex"}
+        className={cn(
+          "grid size-6 place-items-center rounded-md text-cr-twilight transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
+          copied ? "bg-[#f68b1f]" : "bg-[#f2f2f2] hover:bg-[#e6e6e6]",
+        )}
+      >
+        {copied ? <Check className="size-3.5" aria-hidden /> : <Copy className="size-3.5" aria-hidden />}
+      </button>
       <span className="sr-only" aria-live="polite">
         {copied ? "Copied" : ""}
       </span>
-    </button>
+    </span>
   );
 }
