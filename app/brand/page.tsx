@@ -1,9 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
-import { Check, X } from "lucide-react";
+import { Check, Figma, X } from "lucide-react";
 import { PageHeader, Section } from "@/components/site/page-header";
-import { Swatch } from "@/components/site/swatch";
-import { brandColors } from "@/lib/tokens";
+import { LogoGallery, ProductLogoGallery } from "@/components/site/logo-gallery";
+import { ColourGuide } from "@/components/site/colour-guide";
+import { buttonVariants } from "@/components/ui/button";
 
 export const metadata: Metadata = { title: "Brand guidelines" };
 
@@ -47,12 +48,12 @@ const lines = [
 ];
 
 const products = [
-  ["CredResolve OS", "The operating system that holds the family.", "credresolve-os"],
-  ["Chakra", "Digital and voice outreach, omnichannel engagement.", "chakra"],
-  ["Jatayu", "Field operations and last-mile execution.", "jatayu"],
-  ["Drona", "Speech QA and real-time call audit.", "drona"],
-  ["Vishwaroop", "The visual role (eye glyph).", "vishwaroop"],
-  ["Vajra", "Legal workflows.", "vajra"],
+  ["CredResolve OS", "The operating system that holds the family."],
+  ["Chakra", "Digital and voice outreach, omnichannel engagement."],
+  ["Jatayu", "Field operations and last-mile execution."],
+  ["Drona", "Speech QA and real-time call audit."],
+  ["Vishwaroop", "The visual role (eye glyph)."],
+  ["LegalX", "Legal workflows."],
 ];
 
 export default function BrandPage() {
@@ -67,6 +68,16 @@ export default function BrandPage() {
       <Section
         id="logo"
         title="Logo"
+        action={
+          <a
+            href="https://www.figma.com/design/M63lQm4amcN3PGh5sAP3Wg/CR-Design-System?node-id=5015-537"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={buttonVariants({ variant: "outline" })}
+          >
+            <Figma /> Open in Figma
+          </a>
+        }
         lead={
           <>
             The mark is <strong className="text-foreground">Varta, the conversation loop</strong>: two counter-turning
@@ -74,20 +85,7 @@ export default function BrandPage() {
           </>
         }
       >
-        <div className="grid gap-4 md:grid-cols-2">
-          <figure className="flex flex-col gap-3">
-            <div className="grid h-48 place-items-center rounded-lg border bg-white p-8">
-              <img src="/brand/credresolve-lockup.svg" alt="CredResolve primary lockup" className="h-12 w-auto" />
-            </div>
-            <figcaption className="text-sm text-muted-foreground">Primary lockup on white or Ivory.</figcaption>
-          </figure>
-          <figure className="flex flex-col gap-3">
-            <div className="grid h-48 place-items-center rounded-lg border bg-cr-twilight p-8">
-              <img src="/brand/credresolve-lockup-reversed.svg" alt="CredResolve reversed lockup" className="h-12 w-auto" />
-            </div>
-            <figcaption className="text-sm text-muted-foreground">Reversed lockup on Twilight or Jet.</figcaption>
-          </figure>
-        </div>
+        <LogoGallery />
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
           <div className="grid aspect-square place-items-center rounded-lg" style={{ background: "var(--cr-gradient)" }}>
             <img src="/brand/credresolve-mark-white.svg" alt="White mark on gradient tile" className="h-1/2 w-auto" />
@@ -116,36 +114,8 @@ export default function BrandPage() {
         </div>
       </Section>
 
-      <Section
-        id="colour"
-        title="Colour: warmth with authority"
-        lead="Colour is direction, not decoration. Every surface resolves to three roles: ground, structure and signal."
-      >
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-          {brandColors.map((c) => (
-            <Swatch key={c.hex} {...c} size="lg" />
-          ))}
-        </div>
-        <div className="overflow-hidden rounded-lg border">
-          <div className="flex h-16 text-xs font-medium">
-            <div className="flex w-[60%] items-end bg-cr-ivory p-3 text-cr-twilight">Ground 60%</div>
-            <div className="flex w-[30%] items-end bg-cr-twilight p-3 text-cr-ivory">Structure 30%</div>
-            <div className="flex w-[10%] items-end bg-cr-orange p-3 text-cr-twilight">10%</div>
-          </div>
-        </div>
-        <div className="flex flex-col gap-3">
-          <div className="h-24 rounded-lg" style={{ background: "var(--cr-gradient)" }} />
-          <p className="text-sm text-muted-foreground">
-            The CredResolve gradient runs First Light → Resolve Orange → Dusk on a locked 30° axis. Use it once per surface
-            for expression (covers, hero moments). Use flat Resolve Orange for function: UI, small sizes, single-colour
-            print.
-          </p>
-        </div>
-        <ul className="flex flex-col gap-2 text-sm">
-          <Rule ok>On orange, set type in Twilight (5.6:1) or Jet (8.6:1).</Rule>
-          <Rule ok={false}>White text on Resolve Orange (2.4:1 fails contrast).</Rule>
-          <Rule ok={false}>Orange as a text colour on light grounds.</Rule>
-        </ul>
+      <Section id="colour" title="Colour: warmth with authority">
+        <ColourGuide />
       </Section>
 
       <Section
@@ -218,9 +188,9 @@ export default function BrandPage() {
 
       <Section id="products" title="Product family" lead="One platform, specialised engines. Products are modules of CredResolve, not separate brands, and share one palette.">
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {products.map(([n, d, img]) => (
-            <div key={n} className="flex items-start gap-4 rounded-lg border p-4">
-              <img src={`/products/${img}.png`} alt={`${n} logo`} className="h-14 w-auto shrink-0" />
+          {products.map(([n, d]) => (
+            <div key={n} className="flex items-start gap-3 rounded-lg border p-4">
+              <span className="mt-1 size-2.5 shrink-0 rounded-full bg-primary" />
               <div>
                 <p className="font-semibold uppercase tracking-wide">{n}</p>
                 <p className="text-sm text-muted-foreground">{d}</p>
@@ -228,6 +198,7 @@ export default function BrandPage() {
             </div>
           ))}
         </div>
+        <ProductLogoGallery />
       </Section>
 
       <Section id="imagery" title="Imagery" lead="People, systems, real work. Shoot at eye level, show context, leave space and capture exchange.">
